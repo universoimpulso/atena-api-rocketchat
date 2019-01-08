@@ -1,0 +1,6 @@
+{
+    "params_example": "[room name (optional)]",
+    "command_description": "Generate an Atena Message.",
+    "server": "Server",
+    "server_description": "Atena Bot from where the slash command will generate the integration"
+}

@@ -1,0 +1,6 @@
+{
+    "params_example": "[nome da sala (opcional)]",
+    "command_description": "Generate uma mensagem do atena.",
+    "server": "Servidor",
+    "server_description": "Robo Atena onde o slash comando gera uma mensagem de integração"
+}

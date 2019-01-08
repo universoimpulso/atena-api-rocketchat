@@ -1,0 +1,15 @@
+{
+    "id": "64669aa3-3c0f-4e10-9d6e-86eef6dec2c6",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.3.2",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Impulso Network",
+        "homepage": "@rocket.chat/apps-cli",
+        "support": "@rocket.chat/apps-cli"
+    },
+    "name": "Atena Api RocketChat",
+    "nameSlug": "atena-api-rocketchat",
+    "classFile": "index.ts",
+    "description": "Atena Api Rocket Chat integration"
+}
