@@ -5,7 +5,13 @@ import {
 import { App } from '@rocket.chat/apps-engine/definition/App';
 import { IAppInfo } from '@rocket.chat/apps-engine/definition/metadata';
 import { SettingType } from '@rocket.chat/apps-engine/definition/settings';
-import { AtenaRankingSlashCommand, AtenaSlashCommand } from './slashcommand';
+import {
+  AtenaRankingSlashCommand,
+  AtenaGeneralRankingSlashCommand,
+  AtenaMypointsSlashCommand,
+  AtenaGivePointsSlashCommand,
+  AtenaSuggestionSlashCommand
+} from './slashcommand';
 
 export class AtenaApiRocketChatApp extends App {
     constructor(info: IAppInfo, logger: ILogger) {
@@ -13,9 +19,13 @@ export class AtenaApiRocketChatApp extends App {
     }
 
     protected async extendConfiguration(configuration: IConfigurationExtend): Promise<void> {
-	    this.getLogger().log('Hellow world from my app');
-      await configuration.slashCommands.provideSlashCommand(new AtenaSlashCommand(this));
+      // this.getLogger().log('Hellow world from my app');
+      // await configuration.slashCommands.provideSlashCommand(new AtenaSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaRankingSlashCommand(this));
+      await configuration.slashCommands.provideSlashCommand(new AtenaMypointsSlashCommand(this));
+      await configuration.slashCommands.provideSlashCommand(new AtenaGivePointsSlashCommand(this));
+      await configuration.slashCommands.provideSlashCommand(new AtenaSuggestionSlashCommand(this));
+      await configuration.slashCommands.provideSlashCommand(new AtenaGeneralRankingSlashCommand(this));
 
       await configuration.settings.provideSetting({
           id: 'server',

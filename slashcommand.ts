@@ -15,7 +15,7 @@ export class AtenaSlashCommand implements ISlashCommand {
   constructor(private readonly app: App) {
     this.command = 'atena';
     this.i18nParamsExample = 'params_example';
-    this.i18nDescription = 'commmand_description';
+    this.i18nDescription = 'command_description';
     this.providesPreview = false;
   }
 
@@ -57,7 +57,7 @@ export class AtenaRankingSlashCommand implements ISlashCommand {
   constructor(private readonly app: App) {
     this.command = 'ranking';
     this.i18nParamsExample = 'ranking.params_example';
-    this.i18nDescription = 'ranking.commmand_description';
+    this.i18nDescription = 'ranking.command_description';
     this.providesPreview = false;
   }
 
@@ -94,4 +94,155 @@ export class AtenaRankingSlashCommand implements ISlashCommand {
     await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
   }
 
+}
+
+export class AtenaMypointsSlashCommand implements ISlashCommand {
+
+  public command: string;    
+  public i18nParamsExample: string;
+  public i18nDescription: string;
+  public providesPreview: boolean;
+
+  constructor(private readonly app: App) {
+    this.command = 'meuspontos';
+    this.i18nParamsExample = 'score.params_example';
+    this.i18nDescription = 'score.command_description';
+    this.providesPreview = false;
+  }
+
+  public async executor(context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
+    // https://github.com/RocketChat/Apps.Cloudflare/blob/master/slashcommands.ts
+    const [command] = context.getArguments();
+    const server = await read.getEnvironmentReader().getSettings().getValueById('server');
+    const url = server;
+    const data = await sdk.getScore(http, read, context.getSender());
+
+    return await this.sendMessage(context, modify, data);
+  }
+
+  private async sendMessage(context: SlashCommandContext, modify: IModify, text: IMessage): Promise<void> {
+    const msg = modify.getCreator()
+      .startMessage()
+       // .setText(text)
+      .setData(text)
+      .setEmojiAvatar(':atena:')
+      .setUsernameAlias('atena')
+      .setRoom(context.getRoom())    
+      .setSender(context.getSender());
+
+    // .setSender(context.getSender());
+    //await modify.getCreator().finish(msg);
+    await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
+  }
+
+}
+
+export class AtenaGivePointsSlashCommand implements ISlashCommand {
+
+  public command: string;    
+  public i18nParamsExample: string;
+  public i18nDescription: string;
+  public providesPreview: boolean;
+
+  constructor(private readonly app: App) {
+    this.command = 'darpontos';
+    this.i18nParamsExample = 'sendpoints.params_example';
+    this.i18nDescription = 'sendpoints.command_description';
+    this.providesPreview = false;
+  }
+
+  public async executor(context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
+    const [command] = context.getArguments();
+    const server = await read.getEnvironmentReader().getSettings().getValueById('server');
+    const url = server;
+    const uri = "bot/commands/sendpoints";
+    const data = await sdk.getCommand(http, read, context.getSender(), uri);
+
+    return await this.sendMessage(context, modify, data);
+  }
+
+  private async sendMessage(context: SlashCommandContext, modify: IModify, text: IMessage): Promise<void> {
+    const msg = modify.getCreator()
+      .startMessage()
+      .setData(text)
+      .setEmojiAvatar(':atena:')
+      .setUsernameAlias('atena')
+      .setRoom(context.getRoom())    
+      .setSender(context.getSender());
+
+    await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
+  }
+
+}
+
+
+export class AtenaSuggestionSlashCommand implements ISlashCommand {
+  public command: string;    
+  public i18nParamsExample: string;
+  public i18nDescription: string;
+  public providesPreview: boolean;
+
+  constructor(private readonly app: App) {
+    this.command = 'sugestao';
+    this.i18nParamsExample = 'feedback.params_example';
+    this.i18nDescription = 'feedback.command_description';
+    this.providesPreview = false;
+  }
+
+  public async executor(context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {
+    const [command] = context.getArguments();
+    const server = await read.getEnvironmentReader().getSettings().getValueById('server');
+    const url = server;
+    const uri = "bot/commands/feedback";
+    const data = await sdk.getCommand(http, read, context.getSender(), uri);
+
+    return await this.sendMessage(context, modify, data);
+  }
+
+  private async sendMessage(context: SlashCommandContext, modify: IModify, text: IMessage): Promise<void> {
+    const msg = modify.getCreator()
+      .startMessage()
+      .setData(text)
+      .setEmojiAvatar(':atena:')
+      .setUsernameAlias('atena')
+      .setRoom(context.getRoom())    
+      .setSender(context.getSender());
+
+    await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
+  }
+
+}
+
+
+export class AtenaGeneralRankingSlashCommand implements ISlashCommand {
+  public command: string;    
+  public i18nParamsExample: string;
+  public i18nDescription: string;
+  public providesPreview: boolean;
+
+  constructor(private readonly app: App) {
+    this.command = 'rankinggeral';
+    this.i18nParamsExample = 'rankinggeneral.params_example';
+    this.i18nDescription = 'rankinggeneral.command_description';
+    this.providesPreview = false;
+  }
+
+  public async executor(context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {        
+    const uri = "bot/commands/general-raking";
+    const data = await sdk.getCommand(http, read, context.getSender(), uri);
+
+    return await this.sendMessage(context, modify, data);
+  }
+
+  private async sendMessage(context: SlashCommandContext, modify: IModify, text: IMessage): Promise<void> {
+    const msg = modify.getCreator()
+      .startMessage()
+      .setData(text)
+      .setEmojiAvatar(':atena:')
+      .setUsernameAlias('atena')
+      .setRoom(context.getRoom())    
+      .setSender(context.getSender());
+
+    await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
+  }
 }
