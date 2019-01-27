@@ -10,7 +10,8 @@ import {
   AtenaGeneralRankingSlashCommand,
   AtenaMypointsSlashCommand,
   AtenaGivePointsSlashCommand,
-  AtenaSuggestionSlashCommand
+  AtenaSuggestionSlashCommand,
+  AtenaMinhasConquistasSlashCommand
 } from './slashcommand';
 
 export class AtenaApiRocketChatApp extends App {
@@ -26,6 +27,7 @@ export class AtenaApiRocketChatApp extends App {
       await configuration.slashCommands.provideSlashCommand(new AtenaGivePointsSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaSuggestionSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaGeneralRankingSlashCommand(this));
+      await configuration.slashCommands.provideSlashCommand(new AtenaMinhasConquistasSlashCommand(this));
 
       await configuration.settings.provideSetting({
           id: 'server',

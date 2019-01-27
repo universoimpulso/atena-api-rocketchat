@@ -246,3 +246,36 @@ export class AtenaGeneralRankingSlashCommand implements ISlashCommand {
     await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
   }
 }
+
+export class AtenaMinhasConquistasSlashCommand implements ISlashCommand {
+  public command: string;    
+  public i18nParamsExample: string;
+  public i18nDescription: string;
+  public providesPreview: boolean;
+
+  constructor(private readonly app: App) {
+    this.command = 'minhasconquistas';
+    this.i18nParamsExample = 'minhasconquistas.params_example';
+    this.i18nDescription = 'minhasconquistas.command_description';
+    this.providesPreview = false;
+  }
+
+  public async executor(context: SlashCommandContext, read: IRead, modify: IModify, http: IHttp, persis: IPersistence): Promise<void> {        
+    const uri = "bot/commands/minhasconquistas";
+    const data = await sdk.getCommand(http, read, context.getSender(), uri);
+
+    return await this.sendMessage(context, modify, data);
+  }
+
+  private async sendMessage(context: SlashCommandContext, modify: IModify, text: IMessage): Promise<void> {
+    const msg = modify.getCreator()
+      .startMessage()
+      .setData(text)
+      .setEmojiAvatar(':atena:')
+      .setUsernameAlias('atena')
+      .setRoom(context.getRoom())    
+      .setSender(context.getSender());
+
+    await modify.getNotifier().notifyUser(context.getSender(), msg.getMessage());
+  }
+}

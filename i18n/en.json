@@ -22,5 +22,9 @@
     "rankinggeneral": {
       "params_example": "",
       "command_description": "Show General Ranking"
+    },
+    "minhasconquistas": {
+      "params_example": "",
+      "command_description": "Show Minhas Conquistas"
     }
 }
