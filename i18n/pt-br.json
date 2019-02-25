@@ -26,5 +26,9 @@
     "minhasconquistas": {
       "params_example": "",
       "command_description": "Show Minhas Conquistas"
+    },
+    "opensource": {
+      "params_example": "",
+      "command_description": "Integração com Github"
     }
 }

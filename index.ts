@@ -11,7 +11,8 @@ import {
   AtenaMypointsSlashCommand,
   AtenaGivePointsSlashCommand,
   AtenaSuggestionSlashCommand,
-  AtenaMinhasConquistasSlashCommand
+  AtenaMinhasConquistasSlashCommand,
+  AtenaOpenSourceSlashCommand
 } from './slashcommand';
 
 export class AtenaApiRocketChatApp extends App {
@@ -20,14 +21,13 @@ export class AtenaApiRocketChatApp extends App {
     }
 
     protected async extendConfiguration(configuration: IConfigurationExtend): Promise<void> {
-      // this.getLogger().log('Hellow world from my app');
-      // await configuration.slashCommands.provideSlashCommand(new AtenaSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaRankingSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaMypointsSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaGivePointsSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaSuggestionSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaGeneralRankingSlashCommand(this));
       await configuration.slashCommands.provideSlashCommand(new AtenaMinhasConquistasSlashCommand(this));
+      await configuration.slashCommands.provideSlashCommand(new AtenaOpenSourceSlashCommand(this));
 
       await configuration.settings.provideSetting({
           id: 'server',
