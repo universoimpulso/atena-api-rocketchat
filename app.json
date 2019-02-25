@@ -5,8 +5,8 @@
     "iconFile": "icon.png",
     "author": {
         "name": "Impulso Network",
-        "homepage": "@rocket.chat/apps-cli",
-        "support": "@rocket.chat/apps-cli"
+        "homepage": "https://github.com/impulsonetwork/atena-api-rocketchat",
+        "support": "https://github.com/impulsonetwork/atena-api-rocketchat"
     },
     "name": "Atena Api RocketChat",
     "nameSlug": "atena-api-rocketchat",

@@ -2,5 +2,33 @@
     "params_example": "[room name (optional)]",
     "command_description": "Generate an Atena Message.",
     "server": "Server",
-    "server_description": "Atena Bot from where the slash command will generate the integration"
+    "server_description": "Atena Bot from where the slash command will generate the integration",
+    "score": {
+      "params_example": "",
+      "command_description": "See my points on game" 
+     },
+     "sendpoints": {
+      "params_example": "",
+      "command_description": "Admins can manually score" 
+     },
+     "feedback": {
+      "params_example": "[msg]",
+      "command_description": "Send an message together" 
+     },
+    "ranking": {
+      "params_example": "[month number (optional)]",
+      "command_description": "Show Ranking by monthly"
+    },
+    "rankinggeneral": {
+      "params_example": "",
+      "command_description": "Show General Ranking"
+    },
+    "minhasconquistas": {
+      "params_example": "",
+      "command_description": "Show Minhas Conquistas"
+    },
+    "opensource": {
+      "params_example": "",
+      "command_description": "Integration with Github"
+    }
 }

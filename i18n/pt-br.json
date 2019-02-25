@@ -2,5 +2,33 @@
     "params_example": "[nome da sala (opcional)]",
     "command_description": "Generate uma mensagem do atena.",
     "server": "Servidor",
-    "server_description": "Robo Atena onde o slash comando gera uma mensagem de integração"
+    "server_description": "Robo Atena onde o slash comando gera uma mensagem de integração",
+    "score": {
+      "params_example": "",
+      "command_description": "Ver meus pontos na gamificação" 
+     },
+     "sendpoints": {
+      "params_example": "",
+      "command_description": "Admins podem dar pontos manualmente" 
+     },
+     "feedback": {
+      "params_example": "[mensagem]",
+      "command_description": "Envie uma mensagem junto" 
+     },
+    "ranking": {
+      "params_example": "[número do mês (opcional)]",
+      "command_description": "Mostra o ranking mensal"
+    },
+    "rankinggeneral": {
+      "params_example": "",
+      "command_description": "Mostrar Ranking Geral"
+    },
+    "minhasconquistas": {
+      "params_example": "",
+      "command_description": "Show Minhas Conquistas"
+    },
+    "opensource": {
+      "params_example": "",
+      "command_description": "Integração com Github"
+    }
 }
